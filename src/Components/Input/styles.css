@@ -1,0 +1,24 @@
+.input-wrapper{
+    margin-bottom: 1.5rem;
+}
+
+.custom-input{
+    background-color: #20062e;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    font-size: 1rem;
+    opacity: 0.8;
+    border: 2px solid #FFFFFF80;
+    border-radius: 0.5rem;
+    color: white;
+}
+
+.custom-input:focus{
+    outline: 0;
+    opacity: 1;
+    transition: all 0.2s;
+}
+
+.custom-input::placeholder{
+    color: #FFFFFF80;
+}

@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    gap: 1.5rem;
+    position: fixed;
+    top: 0;
+}
+
+.active {
+    color: #fcfcfc;
+}
