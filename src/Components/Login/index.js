@@ -19,31 +19,36 @@ function Login() {
 
   const handleLogin = async () => {
     setLoading(true);
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
+    if (email && password) {
+      try {
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        const user = userCredential.user;
 
-      const userDoc = await getDoc(doc(db, "users", user.uid));
-      const userData = userDoc.data();
-      console.log("userData", userData);
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        const userData = userDoc.data();
+        console.log("userData", userData);
 
-      dispatch(
-        setUser({
-          email: user.email,
-          uid: user.uid,
-          // profilePic: fileURL,
-        })
-      );
+        dispatch(
+          setUser({
+            email: user.email,
+            uid: user.uid,
+            // profilePic: fileURL,
+          })
+        );
 
-      toast.success("Logged In Successfully!!");
-      setLoading(false);
-      navigate("/profile");
-    } catch (e) {
-      toast.error(e.message);
+        toast.success("Logged In Successfully!!");
+        setLoading(false);
+        navigate("/profile");
+      } catch (e) {
+        toast.error(e.message);
+        setLoading(false);
+      }
+    } else {
+      toast.error("All Fields Are Mandatory!");
       setLoading(false);
     }
   };
@@ -55,12 +60,14 @@ function Login() {
         placeholder={"Email"}
         state={email}
         setState={setEmail}
+        required={true}
       />
       <Input
         type={"password"}
         placeholder={"Password"}
         state={password}
         setState={setPassword}
+        required={true}
       />
       <Button
         text={loading ? "loading..." : "Login"}

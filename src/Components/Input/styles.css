@@ -26,3 +26,26 @@
 .custom-input::placeholder{
     color: var(--purple-grey)
 }
+
+.file-input{
+    width: calc(80% - 2rem);
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+    border: 2px dotted var(--purple-grey);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color: var(--purple-grey);
+}
+
+.file-input:hover{
+    border-color: var(--white);
+    cursor: pointer;
+    color: var(--white);
+}
+
+.selected{
+    border: 2px solid var(--white) !important;
+    color: var(--white) !important;
+}
