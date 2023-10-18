@@ -1,34 +1,42 @@
 .app {
-  background-color: #20062e;
-  color: white;
+  background-color: var(--theme);
+  color: var(--white);
   width: 100vw;
   height: 100vh;
 }
 
-.wrapper {
+/* .wrapper {
+  width: 100vw;
+  height: 100vh;
+} */
+
+.signup{
+  position: fixed;
+  top: 3rem;
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
-}
-
-.signup {
-  width: 70%;
-  max-width: 450px;
-  height: auto;
-  box-shadow: var(--shadow);
-  border-radius: 1rem;
-  padding: 1rem 1.5rem;
+  justify-content: flex-start;
+  padding-top: 3rem;
 }
 
 .p-login{
-  text-align: center;
   font-size: 0.8rem;
-  color: #FFFFFF80;
-  cursor: pointer;
+  color: var(--purple-grey);
+  text-align: center;
 }
 
-.p-login:hover {
+.p-login span:hover {
+  cursor: pointer;
   color: white;
+}
+
+.profile{
+  padding: 2rem;
+  width: calc(100% - 4rem);
+  height: calc(100% - 7rem);
+  position: relative;
+  top: 3rem;
 }

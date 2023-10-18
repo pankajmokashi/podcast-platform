@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.css";
 
-function Input({ type, placeholder, state, setState }) {
+function Input({ type, placeholder, state, setState, required }) {
   return (
     <div className="input-wrapper">
       <input
@@ -10,6 +10,7 @@ function Input({ type, placeholder, state, setState }) {
         placeholder={placeholder}
         value={state}
         onChange={(e) => setState(e.target.value)}
+        required={required}
       />
     </div>
   );

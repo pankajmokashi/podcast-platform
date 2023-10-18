@@ -1,57 +1,95 @@
 import React, { useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
+import { auth, db } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../slices/userSlice";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-function Signup({ loginForm, setLoginForm }) {
-  let [name, setName] = useState("");
-  let [email, setEmail] = useState("");
-  let [password, setPassword] = useState("");
-  let [confirmPassword, setConfirmPassword] = useState("");
+function Signup() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit() {
-    console.log(name, email, password, confirmPassword);
-  }
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSignup = async () => {
+    setLoading(true);
+
+    if (password === confirmPassword) {
+      try {
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+        const user = userCredential.user;
+        await setDoc(doc(db, "users", user.uid), {
+          name: name,
+          email: user.email,
+          uid: user.uid,
+          // profilePic: fileURL,
+        });
+
+        dispatch(
+          setUser({
+            name: name,
+            email: user.email,
+            uid: user.uid,
+          })
+        );
+
+        toast.success("User Created!");
+        setLoading(false);
+        navigate("/profile"); 
+        
+      } catch (e) {
+        toast.error(e.message);
+        setLoading(false);
+      }
+    } else {
+      toast.error("Password and Confirm Password Doesn't Match!");
+      setLoading(false);
+    }
+    
+  };
 
   return (
-    <div className="signup">
-      <h2
-        className="title"
-        style={{ textAlign: "center", marginBottom: "2rem" }}
-      >
-        Signup
-      </h2>
-      <form>
-        <Input
-          type={"text"}
-          placeholder={"Full Name"}
-          state={name}
-          setState={setName}
-        />
-        <Input
-          type={"email"}
-          placeholder={"Email"}
-          state={email}
-          setState={setEmail}
-        />
-        <Input
-          type={"password"}
-          placeholder={"Password"}
-          state={password}
-          setState={setPassword}
-        />
-        <Input
-          type={"password"}
-          placeholder={"Confirm Password"}
-          state={confirmPassword}
-          setState={setConfirmPassword}
-        />
-        <Button text={"Signup Now"} onClick={handleSubmit} disabled={false} />
-      </form>
-
-      <p className="p-login" onClick={() => setLoginForm(!loginForm)}>
-        Or Have An Account Already? Login.
-      </p>
-    </div>
+    <>
+      <Input
+        type={"text"}
+        placeholder={"Full Name"}
+        state={name}
+        setState={setName}
+        required={true}
+      />
+      <Input
+        type={"email"}
+        placeholder={"Email"}
+        state={email}
+        setState={setEmail}
+      />
+      <Input
+        type={"password"}
+        placeholder={"Password"}
+        state={password}
+        setState={setPassword}
+      />
+      <Input
+        type={"password"}
+        placeholder={"Confirm Password"}
+        state={confirmPassword}
+        setState={setConfirmPassword}
+      />
+      <Button text={loading ? "loading..." : "Signup now"} onClick={handleSignup} disabled={loading} />
+    </>
   );
 }
 

@@ -1,11 +1,18 @@
-import React from 'react'
-import Header from '../Components/Header'
+import React from 'react';
+import Header from '../Components/Header';
+import { useSelector } from 'react-redux';
 
 function Profile() {
+  const user = useSelector((state) => state.user.user);
+
   return (
-    <div className='wrapper'>
+    <>
         <Header />
-    </div>
+        <div className='profile'>
+          <h1>{user.email}</h1>
+          <h1>{user.uid}</h1>
+        </div>
+    </>
   )
 }
 

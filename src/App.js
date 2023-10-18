@@ -6,6 +6,7 @@ import Podcast from "./Pages/Podcast";
 import NewPodcast from "./Pages/NewPodcast";
 import Profile from "./Pages/Profile";
 import SignupSignin from "./Pages/SignupSignin";
+// import PodcastDetails from "./Pages/PodcastDetails";
 
 function App() {
   return (
@@ -14,9 +15,16 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<SignupSignin />} />
-          <Route path="podcast" element={<Podcast />} />
-          <Route path="newpodcast" element={<NewPodcast />} />
-          <Route path="profile" element={<Profile />} />
+          {/* <Route element={<></>}> */}
+          <Route path="/podcasts" element={<Podcast />} />
+          <Route path="/create-podcast" element={<NewPodcast />} />
+          <Route path="/profile" element={<Profile />} />
+          {/* <Route path="/podcast/:podcastId" element={<PodcastDetails />} /> */}
+          {/* <Route 
+            path="/podcast/:podcastId/create-episode"
+            element={<></>}
+          /> */}
+          {/* </Route> */}
         </Routes>
       </Router>
     </div>

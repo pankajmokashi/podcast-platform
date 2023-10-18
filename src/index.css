@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
+:root {
+  --theme: #20062e;
+  --blue: #18b2de;
+  --white: #fff;
+  --grey: #d7d7d7;
+  --purple-grey: #8f8297;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -10,4 +18,11 @@ body {
 
 input, button {
   font-family: 'Inter', sans-serif;
+}
+
+@media screen and (max-width: 400px) {
+  .navbar .links{
+    gap: 1rem !important;
+    font-size: 0.8rem;
+  }
 }

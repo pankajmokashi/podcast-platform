@@ -3,9 +3,9 @@ import Header from '../Components/Header'
 
 function Podcast() {
   return (
-    <div className='wrapper'>
+    <>
         <Header />
-    </div>
+    </>
   )
 }
 
