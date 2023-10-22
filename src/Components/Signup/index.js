@@ -47,9 +47,13 @@ function Signup() {
             })
           );
 
-          toast.success("User Created!");
-          setLoading(false);
           navigate("/profile");
+          setLoading(false);
+          setName("");
+          setEmail("");
+          setPassword("");
+          setConfirmPassword("");
+          toast.success("User Created!");
         } catch (e) {
           toast.error(e.message);
           setLoading(false);

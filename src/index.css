@@ -20,9 +20,28 @@ input, button {
   font-family: 'Inter', sans-serif;
 }
 
+@media screen and (max-width: 750px) {
+  .episode-btn{
+    font-size: 0.8rem !important;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .navbar .links{
     gap: 1rem !important;
     font-size: 0.8rem;
+  }
+  .input-wrapper{
+    width: 100% !important;
+    margin: 0;
+  }
+  .file-input{
+    width: calc(100% - 2rem) !important;
+  }
+  .banner-image{
+    height: calc(300px - 1rem) !important;
+  }
+  .episode-btn{
+    padding: 0.4rem !important;
   }
 }

@@ -40,9 +40,11 @@ function Login() {
           })
         );
 
-        toast.success("Logged In Successfully!!");
-        setLoading(false);
         navigate("/profile");
+        setLoading(false);
+        setEmail("");
+        setPassword("");
+        toast.success("Logged In Successfully!!");
       } catch (e) {
         toast.error(e.message);
         setLoading(false);

@@ -5,6 +5,7 @@ function FileInput({ text, accept, id, required, fileHandleFnc }) {
 
   const onChange = (e) => {
     setFileSelected(e.target.files[0]?.name);
+    fileHandleFnc(e.target.files[0]);
   };
 
   return (

@@ -10,13 +10,8 @@ function SignupSignin() {
     <>
       <Header />
       {flag ? (
-        <div className="signup">
-          <h2
-            className="title"
-            style={{ textAlign: "center", marginBottom: "2rem" }}
-          >
-            Login
-          </h2>
+        <div className="wrapper">
+          <h2>Login</h2>
           <Login />
           <p className="p-login">
             <span onClick={() => setFlag(!flag)}>
@@ -25,13 +20,8 @@ function SignupSignin() {
           </p>
         </div>
       ) : (
-        <div className="signup">
-          <h2
-            className="title"
-            style={{ textAlign: "center", marginBottom: "2rem" }}
-          >
-            Signup
-          </h2>
+        <div className="wrapper">
+          <h2>Signup</h2>
           <Signup />
           <p className="p-login">
             <span onClick={() => setFlag(!flag)}>

@@ -1,0 +1,47 @@
+/* .episode{
+    padding: 1rem;
+    width: calc(100% - 2rem);
+} */
+
+.epi-title{
+    font-weight: 400;
+    margin: 0;
+}
+
+.epi-desc{
+    font-size: 0.9rem;
+    color: var(--grey);
+    font-weight: 300;
+    margin-left: 1rem;
+}
+
+.epi-btn{
+    cursor: pointer;
+    padding: 0.5rem 0;
+    background-color: var(--theme);
+    border: 1px solid var(--white);
+    color: var(--white);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100px;
+    font-size: 1.2rem;
+}
+
+.epi-btn:hover {
+    background-color: var(--white);
+    color: var(--theme);
+}
+
+.epi-btn .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon svg{
+    font-weight: 800;
+}

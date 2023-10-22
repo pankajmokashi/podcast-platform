@@ -13,7 +13,8 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { useDispatch } from "react-redux";
 import { setUser } from "./slices/userSlice";
 import PrivateRoutes from "./Components/PrivateRoutes";
-// import PodcastDetails from "./Pages/PodcastDetails";
+import PodcastDetails from "./Pages/PodcastDetails";
+import CreateAnEpisode from "./Pages/CreateAnEpisode";
 
 function App() {
   const dispatch = useDispatch();
@@ -62,11 +63,8 @@ function App() {
             <Route path="/podcasts" element={<Podcast />} />
             <Route path="/create-podcast" element={<NewPodcast />} />
             <Route path="/profile" element={<Profile />} />
-            {/* <Route path="/podcast/:podcastId" element={<PodcastDetails />} /> */}
-            {/* <Route 
-            path="/podcast/:podcastId/create-episode"
-            element={<></>}
-          /> */}
+            <Route path="/podcasts/:id" element={<PodcastDetails />} />
+            <Route path="/podcasts/:id/create-episode" element={<CreateAnEpisode />} />
           </Route>
         </Routes>
       </Router>

@@ -11,13 +11,14 @@ import { addDoc, collection } from "firebase/firestore";
 function CreatePodcast() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [bannerImage, setBannerImage] = useState("");
-  const [smallImage, setSmallImage] = useState("");
+  const [bannerImage, setBannerImage] = useState(null);
+  const [smallImage, setSmallImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const Navigate = useNavigate();
 
   const handleSubmit = async () => {
+    console.log(title , description , bannerImage , smallImage)
     setLoading(true);
     if (title && description && bannerImage && smallImage) {
       try {
@@ -45,7 +46,7 @@ function CreatePodcast() {
 
         const docRef = await addDoc(collection(db, "podcasts"), podcastData);
 
-        Navigate(`/podcast/${docRef.id}`);
+        Navigate(`/podcasts/${docRef.id}`);
         setTitle("");
         setDescription("");
         setSmallImage(null);
@@ -62,9 +63,11 @@ function CreatePodcast() {
     }
   };
   const handleSmallImage = (file) => {
+    console.log(file)
     setSmallImage(file);
   };
   const handleBannerImage = (file) => {
+    console.log(file)
     setBannerImage(file);
   };
 
