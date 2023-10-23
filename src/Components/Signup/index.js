@@ -40,10 +40,7 @@ function Signup() {
 
           const user = userCredential.user;
 
-          const profileImageRef = ref(
-            storage,
-            `profilePicture/${user.uid}`
-          );
+          const profileImageRef = ref(storage, `profilePicture/${user.uid}`);
           await uploadBytes(profileImageRef, profileImage);
           const profileImageURL = await getDownloadURL(profileImageRef);
 
