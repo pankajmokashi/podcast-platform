@@ -6,6 +6,15 @@ import { collection, doc, getDoc, onSnapshot, query } from "firebase/firestore";
 import { toast } from "react-toastify";
 import EpisodeDetails from "../Components/Episode";
 import AudioPlayer from "../Components/AudioPlayer";
+import ExpandableText from "../Components/Episode/ExpandableText";
+
+const podDesc = {
+  fontSize: "0.9rem",
+  color: "var(--grey)",
+  fontWeight: "300",
+  margin: "0",
+  marginBottom: "1.5rem",
+};
 
 function PodcastDetails() {
   const [episodes, setEpisodes] = useState([]);
@@ -23,7 +32,7 @@ function PodcastDetails() {
 
           if (docSnap.exists()) {
             setPodcast({ id: id, ...docSnap.data() });
-            toast.success("Pocast Found!");
+            // toast.success("Pocast Found!");
           } else {
             toast.error("No Such Podcast!");
             navigate("/podcasts");
@@ -64,7 +73,10 @@ function PodcastDetails() {
   return (
     <>
       <Header />
-      <div className="wrapper">
+      <div
+        className="wrapper"
+        style={{ alignItems: "flex-start", height: "calc(100vh - 11rem)" }}
+      >
         {podcast.id && (
           <>
             <div
@@ -88,7 +100,11 @@ function PodcastDetails() {
             <div className="banner-image">
               <img src={podcast.bannerImage} alt="banner" />
             </div>
-            <p className="pod-desc">{podcast.description}</p>
+            <ExpandableText
+              text={podcast.description}
+              maxLength={300}
+              style={podDesc}
+            />
             <h2 className="pod-title">Episodes :</h2>
             {episodes.length > 0 ? (
               <div className="episode-wrapper">
@@ -110,10 +126,7 @@ function PodcastDetails() {
         )}
       </div>
       {playingFile && (
-        <AudioPlayer 
-          audioSrc={playingFile} 
-          image={podcast.smallImage} 
-        />
+        <AudioPlayer audioSrc={playingFile} image={podcast.smallImage} />
       )}
     </>
   );

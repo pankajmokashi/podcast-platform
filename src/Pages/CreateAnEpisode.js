@@ -8,6 +8,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { auth, db, storage } from "../firebase";
 import { addDoc, collection, doc, getDoc } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../Components/Loader";
 
 function CreateAnEpisode() {
   const { id } = useParams();
@@ -107,7 +108,7 @@ function CreateAnEpisode() {
             />
           </>
         ) : (
-          <div>Loading...</div>
+          <Loader />
         )}
       </div>
     </>
