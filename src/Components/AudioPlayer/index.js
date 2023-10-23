@@ -7,7 +7,7 @@ function AudioPlayer({ audioSrc, image }) {
   const [volume, setVolume] = useState(1);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
-  const [currentTime, setCurrentTime] = useState(1);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef();
 
   useEffect(() => {

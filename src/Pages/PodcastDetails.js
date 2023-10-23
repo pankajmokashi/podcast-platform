@@ -53,7 +53,6 @@ function PodcastDetails() {
         querySnapshot.forEach((doc) => {
           episodeData.push({ id: doc.id, ...doc.data() });
         });
-        episodeData.reverse();
         setEpisodes(episodeData);
       },
       (error) => {
@@ -120,7 +119,7 @@ function PodcastDetails() {
                 ))}
               </div>
             ) : (
-              <div>No Episodes</div>
+              <div style={{ padding: "1rem" }}>No Episodes</div>
             )}
           </>
         )}

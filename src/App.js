@@ -32,7 +32,7 @@ function App() {
                   name: userData.name,
                   email: userData.email,
                   uid: userData.uid,
-                  // profilePic: userData.profilePic,
+                  profileImage: userData.profileImage,
                 })
               );
             }

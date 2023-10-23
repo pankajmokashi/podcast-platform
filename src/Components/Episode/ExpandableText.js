@@ -9,12 +9,12 @@ function ExpandableText({ text, maxLength, style }) {
       {truncatedText}
       {!isExpanded && text.length > maxLength && (
         <span className="expandable" onClick={() => setIsExpanded(true)}>
-          Read more.
+          Read more
         </span>
       )}
       {isExpanded && (
         <span className="expandable" onClick={() => setIsExpanded(false)}>
-          Read less.
+          Read less
         </span>
       )}
     </p>

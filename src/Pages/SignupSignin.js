@@ -4,7 +4,7 @@ import Signup from "../Components/Signup";
 import Login from "../Components/Login";
 
 function SignupSignin() {
-  let [flag, setFlag] = useState(false);
+  const [flag, setFlag] = useState(true);
 
   return (
     <>

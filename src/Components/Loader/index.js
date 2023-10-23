@@ -4,7 +4,7 @@ import "./styles.css";
 function Loader() {
   return (
     <div className="loader-wrapper">
-      <div class="lds-ripple">
+      <div className="lds-ripple">
         <div></div>
         <div></div>
       </div>

@@ -18,7 +18,6 @@ function CreatePodcast() {
   const Navigate = useNavigate();
 
   const handleSubmit = async () => {
-    console.log(title , description , bannerImage , smallImage)
     setLoading(true);
     if (title && description && bannerImage && smallImage) {
       try {
@@ -63,11 +62,9 @@ function CreatePodcast() {
     }
   };
   const handleSmallImage = (file) => {
-    console.log(file)
     setSmallImage(file);
   };
   const handleBannerImage = (file) => {
-    console.log(file)
     setBannerImage(file);
   };
 

@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Input from "../Input";
 import Button from "../Button";
 import { doc, getDoc } from "firebase/firestore";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth, db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -30,13 +34,13 @@ function Login() {
 
         const userDoc = await getDoc(doc(db, "users", user.uid));
         const userData = userDoc.data();
-        console.log("userData", userData);
 
         dispatch(
           setUser({
+            name: userData.name,
             email: user.email,
             uid: user.uid,
-            // profilePic: fileURL,
+            profileImage: userData.profileImage,
           })
         );
 
@@ -52,6 +56,21 @@ function Login() {
     } else {
       toast.error("All Fields Are Mandatory!");
       setLoading(false);
+    }
+  };
+
+  const resetPassword = () => {
+    if (email) {
+      const auth = getAuth();
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          toast.success("Password reset email sent!");
+        })
+        .catch((e) => {
+          toast.error(e.message);
+        });
+    } else {
+      toast.error("Enter Email First!");
     }
   };
 
@@ -76,6 +95,9 @@ function Login() {
         onClick={handleLogin}
         disabled={loading}
       />
+      <p className="p-login">
+        <span onClick={resetPassword}>Reset/Forgot Password</span>
+      </p>
     </>
   );
 }
