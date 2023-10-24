@@ -59,7 +59,6 @@ function AudioPlayer({ audioSrc, image }) {
   };
 
   const handleEnded = () => {
-    setCurrentTime(0);
     setIsPlaying(false);
   };
 
@@ -79,7 +78,7 @@ function AudioPlayer({ audioSrc, image }) {
     <div className="audio-player">
       <img src={image} className="audio-player-image" alt="player-img" />
       <audio ref={audioRef} src={audioSrc} />
-      <span onClick={togglePlay} style={{ cursor: "pointer" }}>
+      <span onClick={togglePlay} className="icon">
         {isPlaying ? <FaPause /> : <FaPlay />}
       </span>
       <div className="duration-flex">
@@ -95,7 +94,7 @@ function AudioPlayer({ audioSrc, image }) {
         />
         <p>-{formatTime(duration - currentTime)}</p>
       </div>
-      <span onClick={toggleMute} style={{ cursor: "pointer" }}>
+      <span onClick={toggleMute} className="icon">
         {isMuted ? <FaVolumeUp /> : <FaVolumeMute />}
       </span>
       <input

@@ -10,7 +10,7 @@ import { collection, onSnapshot, query } from "firebase/firestore";
 
 function Profile() {
   const user = useSelector((state) => state.user.user);
-  const [podcasts, setPodcasts] = useState([])
+  const [filteredPodcasts, setFilteredPodcasts] = useState([]);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -20,7 +20,10 @@ function Profile() {
         querySnapshot.forEach((doc) => {
           podcastsData.push({ id: doc.id, ...doc.data() });
         });
-        setPodcasts(podcastsData);
+        const filteredData = podcastsData.filter((item) => (
+          item.createdBy === user.uid
+        ))
+        setFilteredPodcasts(filteredData);
       },
       (error) => {
         console.error("Error fetching podcasts:", error);
@@ -30,7 +33,7 @@ function Profile() {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [user.uid ]);
 
   const handleLogout = () => {
     signOut(auth)
@@ -42,12 +45,7 @@ function Profile() {
       });
   };
 
-  console.log("user", user);
-  console.log("podcasts", podcasts);
-  const filteredPodcasts = podcasts.filter((item) => (
-    item.createdBy === user.uid
-  ))
-  console.log("filteredPodcasts", filteredPodcasts);
+    
 
   return (
     <>

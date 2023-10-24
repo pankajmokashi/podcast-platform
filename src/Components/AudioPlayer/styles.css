@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     background-color: rgba(14, 2, 21, 0.5);
-    padding: 0.5rem 2rem;
+    padding: 0.5rem;
 }
 
 .audio-player-image{
@@ -23,7 +23,7 @@
     justify-content: center;
     gap: 0.5rem;
     width: 50%;
-    margin: 0 2rem 0 1rem;
+    margin: 0 0.8rem;
 }
 
 .duration-range {
@@ -34,4 +34,10 @@
 .volume-range{
     margin-left: 0.8rem;
     width: 10%;
+}
+
+.audio-player .icon{
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
 }

@@ -14,6 +14,7 @@ const podDesc = {
   fontWeight: "300",
   margin: "0",
   marginBottom: "1.5rem",
+  maxWidth: "1000px",
 };
 
 function PodcastDetails() {
@@ -74,7 +75,7 @@ function PodcastDetails() {
       <Header />
       <div
         className="wrapper"
-        style={{ alignItems: "flex-start", height: "calc(100vh - 11rem)" }}
+        style={{ height: "calc(100vh - 11rem)" }}
       >
         {podcast.id && (
           <>

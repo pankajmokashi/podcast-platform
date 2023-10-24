@@ -20,7 +20,7 @@ function Header() {
           to="/podcasts"
           style={currentPath === "/podcasts" ? { color: "var(--white)" } : {}}
         >
-          Postcasts
+          Posdcasts
         </Link>
         <Link
           to="/create-podcast"
