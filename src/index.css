@@ -77,4 +77,7 @@ button {
   .episode-btn{
     font-size: 0.7rem !important;
   }
+  .profile-card{
+    min-width: calc(220px - 1.25rem);
+  }
 }
