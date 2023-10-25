@@ -13,27 +13,29 @@ function Profile() {
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(
-      query(collection(db, "podcasts")),
-      (querySnapshot) => {
-        const podcastsData = [];
-        querySnapshot.forEach((doc) => {
-          podcastsData.push({ id: doc.id, ...doc.data() });
-        });
-        const filteredData = podcastsData.filter((item) => (
-          item.createdBy === user.uid
-        ))
-        setFilteredPodcasts(filteredData);
-      },
-      (error) => {
-        console.error("Error fetching podcasts:", error);
-      }
-    );
+    if (user) {
+      const unsubscribe = onSnapshot(
+        query(collection(db, "podcasts")),
+        (querySnapshot) => {
+          const podcastsData = [];
+          querySnapshot.forEach((doc) => {
+            podcastsData.push({ id: doc.id, ...doc.data() });
+          });
+          const filteredData = podcastsData.filter(
+            (item) => item.createdBy === user.uid
+          );
+          setFilteredPodcasts(filteredData);
+        },
+        (error) => {
+          console.error("Error fetching podcasts:", error);
+        }
+      );
 
-    return () => {
-      unsubscribe();
-    };
-  }, [user.uid ]);
+      return () => {
+        unsubscribe();
+      };
+    }
+  }, [user]);
 
   const handleLogout = () => {
     signOut(auth)
@@ -44,8 +46,6 @@ function Profile() {
         toast.error(e.message);
       });
   };
-
-    
 
   return (
     <>
@@ -65,20 +65,20 @@ function Profile() {
               </div>
             </div>
             <h2 style={{ margin: 0, marginTop: "2.5rem" }}>Your Podcasts</h2>
-              {filteredPodcasts.length > 0 ? (
-                <div className="podcast-flex" style={{ padding: "2rem 0"}}>
-                  {filteredPodcasts.map((item) => (
-                    <PodcastCard
-                      key={item.id}
-                      id={item.id}
-                      title={item.title}
-                      smallImage={item.smallImage}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <>No Podcast found</>
-              )}
+            {filteredPodcasts.length > 0 ? (
+              <div className="podcast-flex" style={{ padding: "2rem 0" }}>
+                {filteredPodcasts.map((item) => (
+                  <PodcastCard
+                    key={item.id}
+                    id={item.id}
+                    title={item.title}
+                    smallImage={item.smallImage}
+                  />
+                ))}
+              </div>
+            ) : (
+              <>No Podcast found</>
+            )}
           </>
         )}
         <Button text={"Logout"} onClick={handleLogout} />
