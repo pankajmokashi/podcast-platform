@@ -7,6 +7,21 @@
     position: fixed;
     top: 0;
 }
+.nav-icon {
+    align-items: center;
+    justify-content: center;
+    display: none;
+    position: absolute;
+}
+.nav-icon svg{
+    scale: 2;
+    color: #8ae6bb;
+    cursor: pointer;
+}
+.nav-icon svg:hover {
+    color: var(--white);
+    transition: all 0.3s;
+}
 .navbar .links{
     display: flex;
     align-items: center;

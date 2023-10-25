@@ -81,3 +81,38 @@ button {
     min-width: calc(220px - 1.25rem);
   }
 }
+
+@media screen and (max-width: 320px) {
+  .wrapper{
+    padding: 0.5rem !important;
+    width: calc(100% - 1rem) !important;
+    height: calc(100vh - 4rem) !important;
+  }
+  h2{
+    font-size: 1.2rem !important;
+  }
+  .navbar{
+    z-index: 1000 !important;
+  }
+  .nav-icon{
+    display: flex !important;
+    transition: all 0.2s;
+  }
+  .links{
+    position: absolute !important;
+    transition: all 0.2s;
+    flex-direction: column;
+    top: 3rem;
+    width: 100%;
+    background-color: black;
+    padding: 1rem 0;
+    display: none !important;
+    border-radius: 0.3rem;
+  }
+  .links.expanded {
+    display: flex !important;
+  }
+  .nav-icon.icon-active svg{
+    color: var(--white) !important;
+  }
+}

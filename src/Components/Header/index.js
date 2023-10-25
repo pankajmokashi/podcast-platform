@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 import { Link, useLocation } from "react-router-dom";
+import { BiMenu } from "react-icons/bi";
 
 function Header() {
+  const [isNavExpanded, setIsNavExpanded] = useState(false);
   const location = useLocation();
   const currentPath = location.pathname;
 
   return (
     <div className="navbar">
       <div className="gradient"></div>
-      <div className="links">
+      <div className={isNavExpanded ? "nav-icon icon-active" : "nav-icon"}>
+        <BiMenu
+          onClick={() => {
+            setIsNavExpanded(!isNavExpanded);
+          }}
+        />
+      </div>
+      <div className={isNavExpanded ? "links expanded" : "links"}>
         <Link
           to="/"
           style={currentPath === "/" ? { color: "var(--white)" } : {}}
@@ -20,11 +29,13 @@ function Header() {
           to="/podcasts"
           style={currentPath === "/podcasts" ? { color: "var(--white)" } : {}}
         >
-          Posdcasts
+          Podcasts
         </Link>
         <Link
           to="/create-podcast"
-          style={currentPath === "/create-podcast" ? { color: "var(--white)" } : {}}
+          style={
+            currentPath === "/create-podcast" ? { color: "var(--white)" } : {}
+          }
         >
           Start a Podcast
         </Link>
