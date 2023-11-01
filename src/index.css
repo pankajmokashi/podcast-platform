@@ -86,7 +86,6 @@ button {
   .wrapper{
     padding: 0.5rem !important;
     width: calc(100% - 1rem) !important;
-    height: calc(100vh - 4rem) !important;
   }
   h2{
     font-size: 1.2rem !important;
