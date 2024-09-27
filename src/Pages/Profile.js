@@ -77,11 +77,13 @@ function Profile() {
                 ))}
               </div>
             ) : (
-              <>No Podcast found</>
+              <p>No Podcast found</p>
             )}
           </>
         )}
-        <Button text={"Logout"} onClick={handleLogout} />
+        <div style={{ width: "100%", marginTop: "2rem" }}>
+          <Button text={"Logout"} onClick={handleLogout} />
+        </div>
       </div>
     </>
   );
