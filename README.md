@@ -26,7 +26,7 @@ Check out the live version of the app here: https://react-podcast-platform.netli
 To run this project locally:
 - Clone the repository:
 ```
-https://github.com/pankajmokashi/podcast-platform.git
+git clone https://github.com/pankajmokashi/podcast-platform.git
 cd podcast-platform
 ```
 
