@@ -50,7 +50,6 @@ function Login() {
         setPassword("");
         toast.success("Logged In Successfully!!");
       } catch (e) {
-        // console.log(e.message);
         toast.error("Inavalid Credentials");
         setLoading(false);
       }
